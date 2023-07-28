@@ -1,7 +1,7 @@
 //--- list of versions ---
 const versions = {
-    "main": "10.5.2-dev8",
-    "latest": "10.5.1"
+    "latest": "10.5.1",
+    "main": "0.0.0-dirty1"
 }
 //--- list of versions ---
 
