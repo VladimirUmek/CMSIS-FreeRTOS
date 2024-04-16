@@ -205,7 +205,7 @@ Configure CMSIS-FreeRTOS</h2>
 <div class="image">
 <img src="freertos_config_h_cmsis_rtos.png" alt=""/>
 </div>
-<p >The following settings are available:</p>
+<p >The following main settings are available:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Name   </th><th class="markdownTableHeadNone">#define   </th><th class="markdownTableHeadNone">Description    </th></tr>
@@ -226,18 +226,20 @@ Configure CMSIS-FreeRTOS</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Use time slicing   </td><td class="markdownTableBodyNone">configUSE_TIME_SLICING   </td><td class="markdownTableBodyNone">Enable setting to use time slicing.    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Use tickless idle   </td><td class="markdownTableBodyNone">configUSE_TICKLESS_IDLE   </td><td class="markdownTableBodyNone">Enable low power tickless mode that stops tick interrupt when idle.    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Idle should yield   </td><td class="markdownTableBodyNone">configIDLE_SHOULD_YIELD   </td><td class="markdownTableBodyNone">Control Yield behavior of the idle task.    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Check for stack overflow   </td><td class="markdownTableBodyNone">configCHECK_FOR_STACK_OVERFLOW   </td><td class="markdownTableBodyNone">Enable or disable stack overflow checking.    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Use idle hook   </td><td class="markdownTableBodyNone">configUSE_IDLE_HOOK   </td><td class="markdownTableBodyNone">Enable callback function call on each idle task iteration.    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Use tick hook   </td><td class="markdownTableBodyNone">configUSE_TICK_HOOK   </td><td class="markdownTableBodyNone">Enable callback function call during each tick interrupt.    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Use daemon task startup hook   </td><td class="markdownTableBodyNone">configUSE_DAEMON_TASK_STARTUP_HOOK   </td><td class="markdownTableBodyNone">Enable callback function call when timer service starts.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Use malloc failed hook   </td><td class="markdownTableBodyNone">configUSE_MALLOC_FAILED_HOOK   </td><td class="markdownTableBodyNone">Enable callback function call when out of dynamic memory.    </td></tr>
+<td class="markdownTableBodyNone">Use daemon task startup hook   </td><td class="markdownTableBodyNone">configUSE_DAEMON_TASK_STARTUP_HOOK   </td><td class="markdownTableBodyNone">Enable callback function call when timer service starts.    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Use malloc failed hook   </td><td class="markdownTableBodyNone">configUSE_MALLOC_FAILED_HOOK   </td><td class="markdownTableBodyNone">Enable callback function call when out of dynamic memory.    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Queue registry size   </td><td class="markdownTableBodyNone">configQUEUE_REGISTRY_SIZE   </td><td class="markdownTableBodyNone">Define maximum number of queue objects registered for debug purposes.   </td></tr>
 </table>
 <dl class="section note"><dt>Note</dt><dd>Refer to <a class="el" href="cre_freertos_proj.html#native_freertos_config_prio">Interrupt priority configuration</a> for more information on the usage of <code>configMAX_SYSCALL_INTERRUPT_PRIORITY</code>.</dd></dl>
@@ -262,6 +264,68 @@ Configure CMSIS-FreeRTOS</h2>
 <td class="markdownTableBodyNone">Heap functions   </td><td class="markdownTableBodyNone">configEVR_LEVEL_HEAP   </td><td class="markdownTableBodyNone">Define event recording level bitmask for events generated from Heap functions.    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Stream Buffer functions   </td><td class="markdownTableBodyNone">configEVR_LEVEL_STREAMBUFFER   </td><td class="markdownTableBodyNone">Define event recording level bitmask for events generated from Stream Buffer functions.   </td></tr>
+</table>
+<p ><b> Memory Allocation Configuration </b></p>
+<p >The following settings are available:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Name   </th><th class="markdownTableHeadNone">#define   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Support static memory allocation   </td><td class="markdownTableBodyNone">configSUPPORT_STATIC_ALLOCATION   </td><td class="markdownTableBodyNone">Enable or disable support for static memory allocation.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Support dynamic memory allocation   </td><td class="markdownTableBodyNone">configSUPPORT_DYNAMIC_ALLOCATION   </td><td class="markdownTableBodyNone">Enable or disable support for dynamic memory allocation.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Use kernel provided static memory   </td><td class="markdownTableBodyNone">configKERNEL_PROVIDED_STATIC_MEMORY   </td><td class="markdownTableBodyNone">When enabled, FreeRTOS kernel provides static memory for Idle and Timer tasks.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Use application allocated heap   </td><td class="markdownTableBodyNone">configAPPLICATION_ALLOCATED_HEAP   </td><td class="markdownTableBodyNone">When enabled, application must provide heap buffer externally.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Use separate heap for stack allocation   </td><td class="markdownTableBodyNone">configSTACK_ALLOCATION_FROM_SEPARATE_HEAP   </td><td class="markdownTableBodyNone">Enable or disable stack allocation for any task from a separate heap.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Use heap protector   </td><td class="markdownTableBodyNone">configENABLE_HEAP_PROTECTOR   </td><td class="markdownTableBodyNone">Enable or disable bounds checking and obfuscation to heap block pointers.   </td></tr>
+</table>
+<p ><b> Port Specific Configuration </b></p>
+<p >The following settings are available:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Name   </th><th class="markdownTableHeadNone">#define   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Use Floating Point Unit   </td><td class="markdownTableBodyNone">configENABLE_FPU   </td><td class="markdownTableBodyNone">Enable or disable support for FPU when switching execution context.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Use M-Profile Vector Extension   </td><td class="markdownTableBodyNone">configENABLE_MVE   </td><td class="markdownTableBodyNone">Enable or disable support for MVE when switching execution context.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Use Memory Protection Unit   </td><td class="markdownTableBodyNone">configENABLE_MPU   </td><td class="markdownTableBodyNone">Enable or disable support for MPU on ARMv8-M MPU enabled ports.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Use TrustZone Secure Side Only   </td><td class="markdownTableBodyNone">configRUN_FREERTOS_SECURE_ONLY   </td><td class="markdownTableBodyNone">Enable this setting when FreeRTOS runs on the Secure side only.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Use TrustZone Security Extension   </td><td class="markdownTableBodyNone">configENABLE_TRUSTZONE   </td><td class="markdownTableBodyNone">Enable TrustZone when FreeRTOS runs on the Non-Secure side and calls functions from the Secure side.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Minimal secure stack size [words]   </td><td class="markdownTableBodyNone">configMINIMAL_SECURE_STACK_SIZE   </td><td class="markdownTableBodyNone">Stack for idle task Secure side context in words.   </td></tr>
+</table>
+<p ><b> Interrupt Controller Configuration </b></p>
+<dl class="section note"><dt>Note</dt><dd>Settings related to interrupt controller are relevant only on ARMv7-A ports where it is necessary to configure Arm Generic Interrupt Controller (GIC).</dd></dl>
+<p>The following settings are available:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Name   </th><th class="markdownTableHeadNone">#define   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Interrupt controller base address   </td><td class="markdownTableBodyNone">configINTERRUPT_CONTROLLER_BASE_ADDRESS   </td><td class="markdownTableBodyNone">Sets the base address of the interrupt controller peripheral.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Interrupt controller CPU interface offset   </td><td class="markdownTableBodyNone">configINTERRUPT_CONTROLLER_CPU_INTERFACE_OFFSET   </td><td class="markdownTableBodyNone">Sets the offset from interrupt controller base address at which the CPU interface starts.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Interrupt controller unique priorities   </td><td class="markdownTableBodyNone">configUNIQUE_INTERRUPT_PRIORITIES   </td><td class="markdownTableBodyNone">Sets the number of unique priorities that can be specified in the interrupt controller peripheral.   </td></tr>
+</table>
+<p ><b> Symmetric Multiprocessing Configuration </b></p>
+<dl class="section note"><dt>Note</dt><dd>Symmetric Multiprocessing Configuration (SMP) settings are only relevant if FreeRTOS port implementation supports SMP.</dd></dl>
+<p>The following settings are available:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Name   </th><th class="markdownTableHeadNone">#define   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Number of processor cores   </td><td class="markdownTableBodyNone">configNUMBER_OF_CORES   </td><td class="markdownTableBodyNone">Sets the number of available processor cores.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Use processor core affinity   </td><td class="markdownTableBodyNone">configUSE_CORE_AFFINITY   </td><td class="markdownTableBodyNone">Enables the control for task to run on specific processor cores.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Use passive idle hook   </td><td class="markdownTableBodyNone">configUSE_PASSIVE_IDLE_HOOK   </td><td class="markdownTableBodyNone">Enable callback function call on each idle task iteration.   </td></tr>
 </table>
 <h2><a class="anchor" id="cmsis_freertos_er"></a>
 Add Event Recorder Visibility</h2>
@@ -357,7 +421,7 @@ Start the kernel using native API</h2>
 <p >After the kernel is started using FreeRTOS native API, CMSIS-RTOS2 API can be used without restrictions.</p>
 <h1><a class="anchor" id="cmsis_freertos_evr_config"></a>
 Configure Event Recorder</h1>
-<p >This section describes the configuration settings for the <a href="https://www.keil.com/pack/doc/compiler/EventRecorder/html/index.html" target="_blank">Event Recorder</a> annotations. For more information refer to section <a class="el" href="cre_freertos_proj.html#native_freertos_er">Add Event Recorder Visibility to native FreeRTOS project</a> or <a class="el" href="cre_freertos_proj.html#cmsis_freertos_er">Add Event Recorder Visibility to CMSIS-FreeRTOS project</a>.</p>
+<p >This section describes the configuration settings for the <a href="https://arm-software.github.io/CMSIS-View/latest/evr.html" target="_blank">Event Recorder</a> annotations. For more information refer to section <a class="el" href="cre_freertos_proj.html#native_freertos_er">Add Event Recorder Visibility to native FreeRTOS project</a> or <a class="el" href="cre_freertos_proj.html#cmsis_freertos_er">Add Event Recorder Visibility to CMSIS-FreeRTOS project</a>.</p>
 <p >Use below definitions to configure Event Recorder initialization and recording level filter setup.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#define configEVR_INITIALIZE</span></div>
 </div><!-- fragment --><table class="markdownTable">
@@ -395,20 +459,22 @@ Configure Event Recorder</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">0x05   </td><td class="markdownTableBodyNone">Enable generation of error and operational events    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">0x07   </td><td class="markdownTableBodyNone">Enable generation of error, API and operational events    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">0x0F   </td><td class="markdownTableBodyNone">Enable generation of all events   </td></tr>
 </table>
 <p >Definitions configEVR_LEVEL_x set the recording level bitmask for events generated by each function group. They are taken into account only when recording level filter setup is enabled. Default value is <span class="XML-Token">0x05</span>.</p>
 <h1><a class="anchor" id="dbg_cmsisfreertos"></a>
 Debug a CMSIS-FreeRTOS project</h1>
-<dl class="section note"><dt>Note</dt><dd>The following only applies when used with <a href="https://www2.keil.com/mdk5" target="_blank">Arm Keil MDK</a>. If you are using a different toolchain, please consult its user's manual.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The following only applies when used with <a href="https://developer.arm.com/Tools%20and%20Software/Keil%20MDK" target="_blank">Arm Keil MDK</a>. If you are using a different toolchain, please consult its user's manual.</dd></dl>
 <p>Apart from the debug capabilities that <a class="el" href="cre_freertos_proj.html#cmsis_freertos_evr_config">Event Recorder</a> offers, Keil MDK also supports thread aware breakpoints, just like for the standard CMSIS-RTOS.</p>
 <p ><b>Code</b> <b>Example</b> </p>
 <div class="fragment"><div class="line">BS FuncN1, 1, <span class="stringliteral">&quot;break = (CURR_TID == tid_phaseA) ? 1 : 0&quot;</span></div>
 <div class="line">BS FuncN1, 1, <span class="stringliteral">&quot;break = (CURR_TID == tid_phaseA || CURR_TID == tid_phaseD) ? 1 : 0&quot;</span></div>
 <div class="line">BS \\Blinky\Blinky.c\FuncN1\179, 1, <span class="stringliteral">&quot;break = (CURR_TID == tid_phaseA || CURR_TID == tid_phaseD) ? 1 : 0&quot;</span></div>
 </div><!-- fragment --><dl class="section note"><dt>Note</dt><dd><ul>
-<li>For more information on conditional breakpoints in Keil MDK, consult the <a href="https://www.keil.com/support/man/docs/uv4/uv4_db_dbg_breakpnts.htm" target="_blank">user's manual</a>.</li>
-<li>Enabling <a href="https://www.keil.com/support/man/docs/uv4/uv4_ui_view.htm" target="_blank">Periodic Window Update</a> is required to capture register values for active running threads while executing. When turned off, only the current FreeRTOS thread can be unwound after execution has been stopped.</li>
+<li>For more information on conditional breakpoints in Keil MDK, consult the <a href="https://developer.arm.com/documentation/101407/latest/Debugging/Debug-Windows-and-Dialogs/Breakpoints-Window" target="_blank">user's manual</a>.</li>
+<li>Enabling <a href="https://developer.arm.com/documentation/101407/latest/User-Interface/View-Menu" target="_blank">Periodic Window Update</a> is required to capture register values for active running threads while executing. When turned off, only the current FreeRTOS thread can be unwound after execution has been stopped.</li>
 </ul>
 </dd></dl>
 <p><b>Caveats</b> </p>
@@ -417,7 +483,7 @@ Debug a CMSIS-FreeRTOS project</h1>
 <div class="line">BS ThCallee, 1, <span class="stringliteral">&quot;break = (CURR_TID==tid_phaseD) ? 1 : 0&quot;</span></div>
 </div><!-- fragment --> Instead, use this: <div class="fragment"><div class="line">BS ThCallee, 1, <span class="stringliteral">&quot;break= (CURR_TID==tid_phaseA || CURR_TID==tid_phaseD) ? 1 : 0&quot;</span></div>
 </div><!-- fragment --></li>
-<li>If you don't want to use <a href="https://www.keil.com/support/man/docs/uv4/uv4_ui_view.htm" target="_blank">Periodic Window Update</a>, obtain the thread and unwind information by adding a function that gets called from each thread of interest: <div class="fragment"><div class="line">_attribute_((noinline)) <span class="keywordtype">int</span> FuncN1 (<span class="keywordtype">int</span> n1) {</div>
+<li>If you don't want to use <a href="https://developer.arm.com/documentation/101407/latest/User-Interface/View-Menu" target="_blank">Periodic Window Update</a>, obtain the thread and unwind information by adding a function that gets called from each thread of interest: <div class="fragment"><div class="line">_attribute_((noinline)) <span class="keywordtype">int</span> FuncN1 (<span class="keywordtype">int</span> n1) {</div>
 <div class="line">  ...</div>
 <div class="line">}</div>
 </div><!-- fragment --> Then, specify a thread aware breakpoint using an "invalid" thread ID: <div class="fragment"><div class="line">BS FuncN1, 1, <span class="stringliteral">&quot;break = (CURR_TID == tid_phaseA + 1) ? 1 : 0&quot;</span></div>
@@ -426,7 +492,7 @@ Debug a CMSIS-FreeRTOS project</h1>
 <div class="line">  ...</div>
 <div class="line">}</div>
 </div><!-- fragment --> This helps to make thread aware breakpoints far less dependent on the compiler optimization level.</li>
-<li>Thread aware breakpoints should be setup using a <a href="https://www.keil.com/support/man/docs/uv4/uv4_db_scripting.htm" target="_blank">debug script</a>. Reason being that thread aware breakpoints are of a 'hybrid' type, that is a combined address and condition expression that works best when run from a debug script. </li>
+<li>Thread aware breakpoints should be setup using a <a href="https://developer.arm.com/documentation/101407/latest/Debugging/Debug-Scripting" target="_blank">debug script</a>. Reason being that thread aware breakpoints are of a 'hybrid' type, that is a combined address and condition expression that works best when run from a debug script. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
