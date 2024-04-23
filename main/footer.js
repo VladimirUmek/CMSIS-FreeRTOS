@@ -3,5 +3,5 @@ function writeHeader() {
 };
 
 function writeFooter()  {
-    document.write('Generated on Tue Apr 16 2024 13:26:47 for CMSIS-FreeRTOS 0.0.0-dirty1+g68d99b6. Copyright &copy; 2024 Arm Limited (or its affiliates). All rights reserved.');
+    document.write('Generated on Tue Apr 23 2024 12:32:11 for CMSIS-FreeRTOS 0.0.0-dirty1+g69cc61c. Copyright &copy; 2024 Arm Limited (or its affiliates). All rights reserved.');
 };
