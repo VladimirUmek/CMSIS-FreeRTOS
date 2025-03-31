@@ -26,7 +26,7 @@
 #include "FreeRTOS.h"                   // ARM.FreeRTOS::RTOS:Core
 #include "task.h"                       // ARM.FreeRTOS::RTOS:Core
 #include "semphr.h"                     // ARM.FreeRTOS::RTOS:Core
-
+// TEST: modify
 /* Event Recorder initialization before entering function "main" */
 #if (defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050) && !defined(__MICROLIB))
 extern void _platform_post_stackheap_init (void);
