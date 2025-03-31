@@ -2,7 +2,7 @@
 # Version: 3.0
 # Date: 2023-11-06
 # This bash script generates a CMSIS Software Pack: CMSIS-FreeRTOS
-#
+# TEST: modify
 
 set -o pipefail
 
